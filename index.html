@@ -2,57 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
     <script>
-       
-var age = 30;
-console.log("Мій вік:", age);
+let temperatureCelsius = 25;
+let temperatureFahrenheit = (temperatureCelsius * 9/5) + 32;
+console.log("Температура у Фаренгейтах: " + temperatureFahrenheit);
 
+let daysInMonth = 30;
+let hoursInMonth = daysInMonth * 24;
+let minutesInMonth = hoursInMonth * 60;
+console.log("Годин у місяці: " + hoursInMonth);
+console.log("Хвилин у місяці: " + minutesInMonth);
 
-var name = "Василь";
-console.log("Моє ім'я:", name);
+let health = 100;
+let energy = 80;
+health -= 20;
+energy -= 10;
+console.log("Рівень здоров'я гравця: " + health);
+console.log("Рівень енергії гравця: " + energy);
 
+let purchaseAmount = 100;
+let discountedAmount = purchaseAmount * 0.1;
+let finalAmount = purchaseAmount - discountedAmount;
+console.log("Сума після застосування знижки: " + finalAmount);
 
-var isStudent = true;
-console.log("Чи я студент:", isStudent);
+let floatingNumber = 3.7;
+let roundedNumber = Math.floor(floatingNumber);
+console.log("Округлене число: " + roundedNumber);
 
+let stringNumber = "7.8";
+let parsedFloatNumber = parseFloat(stringNumber);
+console.log("Число з плаваючою комою: " + parsedFloatNumber);
 
-var myString = "Життя - це те, що відбувається, поки ми робимо плани.";
-console.log("Моя улюблена цитата:", myString);
+let stringInteger = "15";
+let parsedInteger = parseInt(stringInteger);
+console.log("Ціле число: " + parsedInteger);
 
+let numberToSquareRoot = 16;
+let squareRoot = Math.sqrt(numberToSquareRoot);
+console.log("Квадратний корінь числа: " + squareRoot);
 
-var myNumber = 7;
-myNumber += 10;
-console.log("Моє число з доданням 10:", myNumber);
-
-
-var myNull = null;
-console.log("Змінна myNull:", myNull);
-
-
-var userName = prompt("Будь ласка, введіть ваше ім'я:");
-alert("Привіт, " + userName + "!");
-
-
-var confirmation = confirm("Натисніть OK, якщо ви погоджуєтесь з цим.");
-if (confirmation) {
-    alert("Дякую за підтвердження!");
-} else {
-    alert("Дію відмінено!");
-}
-
-
-alert("Увага! Ця дія є небезпечною.");
-var confirmationDangerous = confirm("Ви впевнені, що хочете продовжити?");
-if (confirmationDangerous) {
-    alert("Дякую за підтвердження!");
-} else {
-    alert("Дію відмінено!");
-}
-
+let integerNumber = 20;
+let stringFromInteger = integerNumber.toString();
+let parsedStringToInteger = parseInt(stringFromInteger);
+console.log("Рядок з числа: " + stringFromInteger);
+console.log("Число з рядка: " + parsedStringToInteger);
     </script>
 </body>
 </html>
