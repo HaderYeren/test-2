@@ -5,4 +5,4 @@ const moveBox = (event) => {
   box.style.top = `${event.pageY}px`;
 };
 
-document.addEventListener('mousemove', debounce(moveBox, 100));
+document.addEventListener('mousemove', _.debounce(moveBox, 100));

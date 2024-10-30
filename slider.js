@@ -6,11 +6,6 @@ const updateImageSize = (event) => {
   sliderImage.style.width = `${sliderValue}%`;
 };
 
-sliderInput.addEventListener('input', debounce(updateImageSize, 150));
-
-
-
-
-
+sliderInput.addEventListener('input', _.debounce(updateImageSize, 150));
 
 
