@@ -1,75 +1,55 @@
-let students = [];
-const studentForm = document.getElementById('student-form');
-const studentTableBody = document.getElementById('student-table-body');
-const searchInput = document.getElementById('searchInput');
 
-studentForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+let count = 0;
+let interval = setInterval(() => {
+    count++;
+    document.getElementById("log").innerHTML += `<p>Повідомлення ${count}</p>`;
+    if (count === 5) {
+        clearInterval(interval);
+    }
+}, 1000);
+let box = document.querySelector(".box");
+let position = 50;
+setInterval(() => {
+    position += 10;
+    box.style.left = position + "px";
+    if (position > 300) position = 50;
+}, 500);
+let score = 0;
+let gameTime = 10;
+let gameActive = false;
+let gameInterval;
 
-  const firstName = document.getElementById('firstName').value;
-  const lastName = document.getElementById('lastName').value;
-  const age = document.getElementById('age').value;
-  const course = document.getElementById('course').value;
-  const faculty = document.getElementById('faculty').value;
-  const subjects = document.getElementById('subjects').value.split(',');
-
-  const student = {
-    firstName,
-    lastName,
-    age,
-    course,
-    faculty,
-    subjects,
-  };
-
-  students.push(student);
-  renderTable(students);
-  studentForm.reset();
+document.getElementById("clickBtn").addEventListener("click", () => {
+    if (gameActive) {
+        score++;
+        document.getElementById("score").innerText = score;
+    }
 });
+function startGame() {
+    score = 0;
+    gameTime = 10;
+    gameActive = true;
+    document.getElementById("score").innerText = score;
 
-function renderTable(students) {
-  studentTableBody.innerHTML = '';
-  students.forEach((student, index) => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${student.firstName}</td>
-      <td>${student.lastName}</td>
-      <td>${student.age}</td>
-      <td>${student.course}</td>
-      <td>${student.faculty}</td>
-      <td>${student.subjects.join(', ')}</td>
-      <td>
-        <button onclick="editStudent(${index})">Редагувати</button>
-        <button onclick="deleteStudent(${index})">Видалити</button>
-      </td>
-    `;
-    studentTableBody.appendChild(row);
-  });
+    gameInterval = setInterval(() => {
+        gameTime--;
+        if (gameTime === 0) {
+            clearInterval(gameInterval);
+            gameActive = false;
+            alert("Час вийшов! Ваш рахунок: " + score);
+        }
+    }, 1000);
 }
-
-function deleteStudent(index) {
-  students.splice(index, 1);
-  renderTable(students);
-}
-
-function editStudent(index) {
-  const student = students[index];
-  document.getElementById('firstName').value = student.firstName;
-  document.getElementById('lastName').value = student.lastName;
-  document.getElementById('age').value = student.age;
-  document.getElementById('course').value = student.course;
-  document.getElementById('faculty').value = student.faculty;
-  document.getElementById('subjects').value = student.subjects.join(',');
-  students.splice(index, 1);
-}
-
-searchInput.addEventListener('input', () => {
-  const query = searchInput.value.toLowerCase();
-  const filtered = students.filter(student =>
-    student.lastName.toLowerCase().includes(query) ||
-    student.course.toString().includes(query)
-  );
-  renderTable(filtered);
+document.getElementById("clickBtn").addEventListener("click", () => {
+    if (!gameActive) {
+        startGame();
+    }
 });
-
-renderTable(students);
+document.getElementById("startTimer").addEventListener("click", () => {
+    let time = parseInt(document.getElementById("timeInput").value);
+    if (!isNaN(time) && time > 0) {
+        setTimeout(() => {
+            alert("Час вийшов!");
+        }, time * 1000);
+    }
+});

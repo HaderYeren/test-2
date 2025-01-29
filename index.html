@@ -1,44 +1,26 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Студенти</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Таймер, Анімація, Гра, Контроль часу</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Список студентів</h1>
-    <form id="student-form">
-      <input type="text" id="firstName" placeholder="Ім'я" required>
-      <input type="text" id="lastName" placeholder="Прізвище" required>
-      <input type="number" id="age" placeholder="Вік" required>
-      <input type="text" id="course" placeholder="Курс" required>
-      <input type="text" id="faculty" placeholder="Факультет" required>
-      <input type="text" id="subjects" placeholder="Курси (через кому)" required>
-      <button type="submit">Додати студента</button>
-    </form>
+    <h1>Таймер інтервалу</h1>
+    <div id="log"></div>
 
-    <div id="search">
-      <input type="text" id="searchInput" placeholder="Пошук за прізвищем або курсом">
-    </div>
+    <h1>Анімація елементів</h1>
+    <div class="box"></div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Ім'я</th>
-          <th>Прізвище</th>
-          <th>Вік</th>
-          <th>Курс</th>
-          <th>Факультет</th>
-          <th>Курси</th>
-          <th>Дії</th>
-        </tr>
-      </thead>
-      <tbody id="student-table-body"></tbody>
-    </table>
-  </div>
+    <h1>Інтерактивна гра</h1>
+    <p>Клікай на кнопку, поки не закінчиться час!</p>
+    <button id="clickBtn">Клікни мене</button>
+    <p>Очки: <span id="score">0</span></p>
 
-  <script src="script.js"></script>
+    <h1>Контроль часу</h1>
+    <input type="number" id="timeInput" placeholder="Введіть секунди">
+    <button id="startTimer">Запустити таймер</button>
+
+    <script src="script.js"></script>
 </body>
 </html>
