@@ -1,55 +1,73 @@
-
-let count = 0;
-let interval = setInterval(() => {
-    count++;
-    document.getElementById("log").innerHTML += `<p>Повідомлення ${count}</p>`;
-    if (count === 5) {
-        clearInterval(interval);
-    }
-}, 1000);
-let box = document.querySelector(".box");
-let position = 50;
-setInterval(() => {
-    position += 10;
-    box.style.left = position + "px";
-    if (position > 300) position = 50;
-}, 500);
-let score = 0;
-let gameTime = 10;
-let gameActive = false;
-let gameInterval;
-
-document.getElementById("clickBtn").addEventListener("click", () => {
-    if (gameActive) {
-        score++;
-        document.getElementById("score").innerText = score;
-    }
-});
-function startGame() {
-    score = 0;
-    gameTime = 10;
-    gameActive = true;
-    document.getElementById("score").innerText = score;
-
-    gameInterval = setInterval(() => {
-        gameTime--;
-        if (gameTime === 0) {
-            clearInterval(gameInterval);
-            gameActive = false;
-            alert("Час вийшов! Ваш рахунок: " + score);
+// Завдання 1
+const delay = ms => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(ms);
+      }, ms);
+    });
+  };
+  
+  const logger = time => console.log(`Resolved after ${time}ms`);
+  
+  document.getElementById('delayButton').addEventListener('click', () => {
+    delay(2000).then(logger);
+  });
+  
+  // Завдання 2
+  const users = [
+    { name: 'Mango', active: true },
+    { name: 'Poly', active: false },
+    { name: 'Ajax', active: true },
+    { name: 'Lux', active: false },
+  ];
+  
+  const toggleUserState = (allUsers, userName) => {
+    return new Promise(resolve => {
+      const updatedUsers = allUsers.map(user =>
+        user.name === userName ? { ...user, active: !user.active } : user
+      );
+      resolve(updatedUsers);
+    });
+  };
+  
+  const loggerToggle = updatedUsers => console.table(updatedUsers);
+  
+  document.getElementById('toggleButton').addEventListener('click', () => {
+    toggleUserState(users, 'Mango').then(loggerToggle);
+  });
+  
+  // Завдання 3
+  const randomIntegerFromInterval = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+  
+  const makeTransaction = transaction => {
+    return new Promise((resolve, reject) => {
+      const delay = randomIntegerFromInterval(200, 500);
+      
+      setTimeout(() => {
+        const canProcess = Math.random() > 0.3;
+        
+        if (canProcess) {
+          resolve({ id: transaction.id, time: delay });
+        } else {
+          reject(transaction.id);
         }
-    }, 1000);
-}
-document.getElementById("clickBtn").addEventListener("click", () => {
-    if (!gameActive) {
-        startGame();
-    }
-});
-document.getElementById("startTimer").addEventListener("click", () => {
-    let time = parseInt(document.getElementById("timeInput").value);
-    if (!isNaN(time) && time > 0) {
-        setTimeout(() => {
-            alert("Час вийшов!");
-        }, time * 1000);
-    }
-});
+      }, delay);
+    });
+  };
+  
+  const logSuccess = ({ id, time }) => {
+    console.log(`Transaction ${id} processed in ${time}ms`);
+  };
+  
+  const logError = id => {
+    console.warn(`Error processing transaction ${id}. Please try again later.`);
+  };
+  
+  document.getElementById('transactionButton').addEventListener('click', () => {
+    makeTransaction({ id: 70, amount: 150 })
+      .then(logSuccess)
+      .catch(logError);
+  });
+  
