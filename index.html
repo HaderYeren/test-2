@@ -1,36 +1,49 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Завдання</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>CRUD Students</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>Завдання 1, 2, 3: Проміси</h1>
+  <div class="container">
+    <h1>Список студентів</h1>
+    <button id="get-students-btn">Отримати студентів</button>
 
-  <!-- Завдання 1 -->
-  <section>
-    <h2>Завдання 1: Функція delay</h2>
-    <button id="delayButton">Запустити delay (2000ms)</button>
-  </section>
+    <table id="students-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Ім'я</th>
+          <th>Вік</th>
+          <th>Курс</th>
+          <th>Навички</th>
+          <th>Email</th>
+          <th>Статус</th>
+          <th>Дії</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
 
-  <br>
-
-  <!-- Завдання 2 -->
-  <section>
-    <h2>Завдання 2: Toggle User State</h2>
-    <button id="toggleButton">Перемкнути стан користувача (Mango)</button>
-  </section>
-
-  <br>
-
-  <!-- Завдання 3 -->
-  <section>
-    <h2>Завдання 3: Транзакція</h2>
-    <button id="transactionButton">Почати транзакцію (ID: 70)</button>
-  </section>
+    <h2>Додати нового студента</h2>
+    <form id="add-student-form">
+      <label>Ім'я: <input type="text" id="name" required></label>
+      <label>Вік: <input type="number" id="age" required></label>
+      <label>Курс: <input type="text" id="course" required></label>
+      <label>Навички (через кому): <input type="text" id="skills" required></label>
+      <label>Email: <input type="email" id="email" required></label>
+      <label>Записаний: <input type="checkbox" id="isEnrolled"></label>
+      <button type="submit">Додати студента</button>
+    </form>
+  </div>
 
   <script src="script.js"></script>
+  
 </body>
+
 </html>
